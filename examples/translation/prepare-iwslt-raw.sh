@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
 #
 # Adapted from https://github.com/facebookresearch/MIXER/blob/master/prepareData.sh
+#echo 'Cloning Moses github repository (for tokenization scripts)...'
+#git clone https://github.com/moses-smt/mosesdecoder.git
 
 src=$1
 tgt=$2
 year=$3
 SCRIPTS=mosesdecoder/scripts
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
-if [ $year == "17" ]; then
-    URL="https://wit3.fbk.eu/archive/20${year}-01-trnted/texts/${src}/${tgt}/${src}-${tgt}.tgz"
-else
-    URL="https://wit3.fbk.eu/archive/20${year}-01/texts/${src}/${tgt}/${src}-${tgt}.tgz"
-
-fi
-
 GZ=${src}-${tgt}.tgz
 
 lang=${src}-${tgt}
@@ -23,14 +18,17 @@ orig=orig
 
 mkdir -p $orig $tmp $prep
 
-echo "Downloading data from ${URL}..."
 cd $orig
-wget "$URL"
 
 if [ -f $GZ ]; then
-    echo "Data successfully downloaded."
+    echo "unzipping ${GZ}"
 else
-    echo "Data not successfully downloaded."
+    echo "======================================================================================"
+    echo "======================================================================================"
+    echo "===================== Error! Data file ${GZ} is missing ======================"
+    echo "======================================================================================"
+    echo "======================================================================================"
+    echo "===================== Hit ctrl+C to cancel this run and delete created files ======================"
     exit
 fi
 

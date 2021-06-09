@@ -48,8 +48,15 @@ sub word_count {
 }
 ```
 ## Prepare data:
+* Download data from:
+    * https://wit3.fbk.eu/2014-01 for Chinese, Spanish, Arabic, Russian, German, Turkish, Farsi and Hebrew.
+    * https://wit3.fbk.eu/2015-01 for Vietnamese.
+    * https://wit3.fbk.eu/2017-01-c for Japanese.
+    
+* Find the .tgz files of a language pair in the "texts" folder, e.g. texts/zh/en and texts/en/zh for Chinese.
+* Create a folder named "orig" in EmbeddinglessNMT/examples/translation/ and place the en-xx.tgz and xx-en.tgz files in it.
 ```bash
-bash embeddingless_scripts/de/prepare-de-data.sh # this will download and preprocess data for all de-en and en-de models 
+bash embeddingless_scripts/de/prepare-de-data.sh # this preprocess data for all de-en and en-de models 
 ```
 ## Train and evaluate:
 ```bash
