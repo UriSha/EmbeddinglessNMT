@@ -8,7 +8,7 @@ Implementation of [Neural Machine Translation without Embeddings](https://arxiv.
 
 ## Getting started
 ```bash
-git clone https://github.com/pytorch/EmbeddinglessNMT
+git clone https://github.com/UriSha/EmbeddinglessNMT.git
 cd EmbeddinglessNMT
 pip install --editable ./
 mkdir results
